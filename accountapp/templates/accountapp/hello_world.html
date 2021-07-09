@@ -14,18 +14,15 @@
     </style>
 
 
-    <div style=' height: 20rem; background-color: blueviolet; margin: 2rem; border-radius: 1rem;'>
-        <h1> asdfasdfasdf </h1>
+    <div style='margin: 2rem; border-radius: 1rem; text-align: center;'>
+        <h1> http model </h1>
+{#요청을 보내겠다는 주소를 action에 입력, method에 보내는 방식을 입력#}
+        <form action="/accounts/hello_world/" method="post">
+            {% csrf_token %}  {# 이구문을 작성해야 정상적으로 작동함 #}
+            <input type="submit" class="btn btn-outline-dark rounded-pill px-5">
+        </form>
 
-    <div class="testing" style="display: block">block</div>
-    <div class="testing" style="display: block">block</div>
-    <div class="testing" style="display: inline">inline "asdfasfd"</div>
-    <div class="testing" style="display: inline">inline "asdfasfd"</div>
-    <div class="testing" style="display: none">none</div>
-    <div class="testing" style="display: inline-block">inline-block</div>
-    <div class="testing" style="display: inline-block">inline-block</div>
-    <div class="testing"></div>
-
+    <h3>{{ text }}</h3>
     </div>
 
 {% endblock %}
