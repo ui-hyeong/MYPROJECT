@@ -13,3 +13,7 @@
 .pragmatic_footer_botton{
     margin-top: 2rem;
 }
+
+.pragmatic_body_first{
+    height: 20rem; background-color: gray; margin: 2rem; border-radius: 1rem;
+}
