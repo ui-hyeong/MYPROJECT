@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="text-center">
+        <div class="m-5">  {# 기본적으로 제공해주는 클래스 #}
+            <h4>Sign Up</h4>
+        </div>
+        <div>
+            <form action="{% url 'accountapp:create' %}" method="post"> {# post형을 만들떄는 항상 토큰 넣기  / action은 요청을 보낼 경로             #}
+                {% csrf_token %}
+                {{ form }}
+                <div class="m-5">
+
+                    <input type="submit" class = 'btn btn-outline-dark rounded-pill px-5'>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+{% endblock %}
