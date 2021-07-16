@@ -9,8 +9,22 @@
     <div class="pragmatic_header_botton">
         <span>nav1</span>
         <span>nav2</span>
-        <span>nav3</span>
-        <span>nav4</span>
+        {% if not user.is_authenticated %}   {# 로그인 확인 여부를 알아주는 객체 #}
+        <span>
+            <a href="{% url 'accountapp:login' %}">
+                log-in
+            </a>  {# a테그는 html 링크?테그를 만드는 것 #}
+        </span>
+        <span>
+            <a href="{% url 'accountapp:create' %}">
+                sign-up
+            </a>
+        </span>
+        {% else %}
+        <span href="{% url 'accountapp:logout' %}" >
+            log-out
+        </span>
+        {% endif %}
     </div>
 
 </div>
