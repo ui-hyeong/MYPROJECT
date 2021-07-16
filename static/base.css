@@ -17,3 +17,8 @@
 .pragmatic_body_first{
     height: 20rem; background-color: gray; margin: 2rem; border-radius: 1rem;
 }
+
+.mw-500 {
+    max-width: 500px;
+    padding: 1rem 1.5rem;
+}
