@@ -47,8 +47,32 @@ class AccountUpdateView(UpdateView):
     success_url = reverse_lazy('accountapp:hello_cat')
     template_name = 'accountapp/update.html'
 
+    def get(self, request, *args, **kwargs):             # 주소를 직접 입력해서 접근해도 로그인 화면으로 넘어가게 한다.
+        if request.user.is_authenticated:
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().post(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:hello_cat')
     template_name = 'accountapp/delete.html'
+
+    def get(self, request, *args, **kwargs):             # 주소를 직접 입력해서 접근해도 로그인 화면으로 넘어가게 한다.
+        if request.user.is_authenticated:
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().post(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
