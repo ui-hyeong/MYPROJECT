@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
@@ -5,6 +6,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from accountapp.forms import AccountCreationForm
@@ -40,6 +42,8 @@ class AccountDetailView(DetailView):
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
 
+@method_decorator(login_required, 'get')  #함수에 쓰일 데코레이터를 메서드에도 적용시킨다. login을 어디에 적용시킬지도 작성해야한다.
+@method_decorator(login_required, 'post')
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
@@ -47,32 +51,10 @@ class AccountUpdateView(UpdateView):
     success_url = reverse_lazy('accountapp:hello_cat')
     template_name = 'accountapp/update.html'
 
-    def get(self, request, *args, **kwargs):             # 주소를 직접 입력해서 접근해도 로그인 화면으로 넘어가게 한다.
-        if request.user.is_authenticated and self.get_object() == request.user:  # 로그인 확인 여부  //  self.get_object() == target_user와 동일이다.
-            return super().get(request, *args, **kwargs)
-        else:
-            return HttpResponseForbidden()   # 접근금지 응답 송출
-
-    def post(self, request, *args, **kwargs):
-        if request.user.is_authenticated and self.get_object() == request.user:
-            return super().post(request, *args, **kwargs)
-        else:
-            return HttpResponseForbidden()
-
+@method_decorator(login_required, 'get')  #함수에 쓰일 데코레이터를 메서드에도 적용시킨다. login을 어디에 적용시킬지도 작성해야한다.
+@method_decorator(login_required, 'post')
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:hello_cat')
     template_name = 'accountapp/delete.html'
-
-    def get(self, request, *args, **kwargs):             # 주소를 직접 입력해서 접근해도 로그인 화면으로 넘어가게 한다.
-        if request.user.is_authenticated and self.get_object() == request.user:  # 로그인 확인 여부  //  self.get_object() == target_user와 동일이다.
-            return super().get(request, *args, **kwargs)
-        else:
-            return HttpResponseForbidden()   # 접근금지 응답 송출
-
-    def post(self, request, *args, **kwargs):
-        if request.user.is_authenticated and self.get_object() == request.user:
-            return super().post(request, *args, **kwargs)
-        else:
-            return HttpResponseForbidden()
