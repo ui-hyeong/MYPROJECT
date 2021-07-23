@@ -42,8 +42,10 @@ class AccountDetailView(DetailView):
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
 
-@method_decorator(login_required, 'get')  #함수에 쓰일 데코레이터를 메서드에도 적용시킨다. login을 어디에 적용시킬지도 작성해야한다.
-@method_decorator(login_required, 'post')
+has_ownership = [login_required, account_ownership_required] # 두가지 decorate를 적용시켜준다.
+
+@method_decorator(has_ownership, 'get')  #함수에 쓰일 데코레이터를 메서드에도 적용시킨다. login을 어디에 적용시킬지도 작성해야한다.
+@method_decorator(has_ownership, 'post')
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
@@ -51,8 +53,8 @@ class AccountUpdateView(UpdateView):
     success_url = reverse_lazy('accountapp:hello_cat')
     template_name = 'accountapp/update.html'
 
-@method_decorator(login_required, 'get')  #함수에 쓰일 데코레이터를 메서드에도 적용시킨다. login을 어디에 적용시킬지도 작성해야한다.
-@method_decorator(login_required, 'post')
+@method_decorator(has_ownership, 'get')  #함수에 쓰일 데코레이터를 메서드에도 적용시킨다. login을 어디에 적용시킬지도 작성해야한다.
+@method_decorator(has_ownership, 'post')
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
