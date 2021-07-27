@@ -8,7 +8,9 @@
             <h4>Create Profile</h4>
         </div>
         <div>
-            <form action="{% url 'profileapp:create' %}" method="post"> {# post형을 만들떄는 항상 토큰 넣기  / action은 요청을 보낼 경로             #}
+            <form action="{% url 'profileapp:create' %}"
+                  enctype="multipart/form-data"
+                  method="post"> {# post형을 만들떄는 항상 토큰 넣기  / action은 요청을 보낼 경로             #}
                 {% csrf_token %}
                 {% bootstrap_form form %}
                 <div class="m-5">
