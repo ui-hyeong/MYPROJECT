@@ -33,3 +33,16 @@
 .NNS_B {
     font-family: "NanumSquareB", cursive;
 }
+
+.round_button {
+    color: black;
+    text-decoration: none;  /* 아이콘에 밑줄을 없애준다. */
+    box-shadow: 0 0 3px black; /* 1번째 2번째 숫자는 그림자 위치, 3번째 숫자는 크기, 색깔 */
+    border-radius: 20rem;
+    padding: 0.3rem;
+}
+
+/* 마우스가 올라갔을때 어떤 동작을 하는지 */
+.round_button:hover{
+    color : dimgray;
+}
