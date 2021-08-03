@@ -282,6 +282,7 @@ let magicGrid = new MagicGrid({
   useMin: true
 });
 
+magicGrid.listen();
 
 var masonrys = document.getElementsByTagName( "img")
 
@@ -291,9 +292,3 @@ for (let i=0; masonrys.length; i++) {
   }, false)
 }/*이미지가 로드 될 때마다 레이아웃이 재배치 되게 해준다.*/
 
-
-magicGrid.listen();
-
-
-
-magicGrid.listen();
