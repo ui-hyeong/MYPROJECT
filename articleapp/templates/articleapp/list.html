@@ -12,7 +12,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          border-radius: 1px;
+          border-radius: 1rem;
             flex-direction: column; /* 세로로 쌓이게 함 */
             box-shadow: 0 0 1rem gray;
         }
@@ -40,8 +40,8 @@
         </div>
 
 
-    <script src="{% static 'js/magicgrid.js' %}">
+    <script src="{% static 'js/magicgrid.js' %}"></script>
 
-    </script>
+    {% include 'snippets/pagination.html' %}
 
 {% endblock %}
