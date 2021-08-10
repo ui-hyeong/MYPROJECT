@@ -4,7 +4,7 @@
 
     <div class="container text-center">
 
-        <div>
+        <div class="my-5">
             {#   게시글 제목, 글쓴이, 작성일자    #}
             <h1 class="NNS_B">{{ target_article.title }}</h1>
             <h4>{{ target_article.writer.profile.nickname }}</h4>
@@ -34,6 +34,7 @@
             </div>
             {% endif %}
         </div>
+
         <hr>
         <div class="text-center my-4">
         {#    댓글 내용, 댓글 작성창 만드려 함#}
@@ -42,9 +43,6 @@
 
         </div>
     </div>
-
-    </div>
-
 
 
 {% endblock %}
