@@ -67,3 +67,11 @@
     padding: 1rem;
     margin: 1rem;
 }
+
+/*폭이 500px 이하일떄까지 이걸 적용시킨다는 말*/
+@media screen and (max-width: 500px) {
+    html{
+        /* default font-size = 16px */
+        font-size: 13px;
+    }
+}
