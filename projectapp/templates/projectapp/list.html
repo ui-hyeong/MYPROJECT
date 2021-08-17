@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{#스태틱을 가져오겠다는 선언#}
+
+{% block content %}
+
+    <style>
+
+        .container{
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .container div {
+          width: 45%;
+            max-width: 250px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 1rem;
+            flex-direction: column; /* 세로로 쌓이게 함 */
+            box-shadow: 0 0 1rem gray;
+        }
+
+
+
+        .container img {
+            width: 100%;
+            border-radius: 1rem;
+        }
+
+    </style>
+    <div class="container my-4">
+
+        {% for project in project_list %}
+            <div>
+                <a href="{% url 'projectapp:detail' pk=project.pk %}">
+                    <img src="{{ project.image.url }}" alt="">
+                </a>
+                <span class="NNS_B my-2">{{ project.title }}</span>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <script src="{% static 'js/magicgrid.js' %}"></script>
+
+    {% include 'snippets/pagination.html' %}
+
+
+        <a href="{% url 'projectapp:create' %}"
+           class="btn btn-outline-dark rounded-pill px-5">
+            Create Article
+        </a>
+    </div>
+
+{% endblock %}
