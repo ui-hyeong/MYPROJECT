@@ -7,3 +7,6 @@ class Project(models.Model):
     image = models.ImageField(upload_to='project/', null=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self): # 출력값을 했을때 어떤 정보를 출력해줄지
+        return f'{self.name}'
