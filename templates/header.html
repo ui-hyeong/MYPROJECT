@@ -12,7 +12,11 @@
                 Articles
             </a>
         </span>
-        <span>nav2</span>
+        <span>
+            <a href="{% url 'projectapp:list' %}">
+                Projects
+            </a>
+        </span>
         {% if not user.is_authenticated %}   {# 로그인 확인 여부를 알아주는 객체 #}
         <span>
             <a href="{% url 'accountapp:login' %}">
