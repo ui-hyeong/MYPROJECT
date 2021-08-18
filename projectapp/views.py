@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.list import MultipleObjectMixin
 
+from articleapp.models import Article
 from projectapp.forms import ProjectCreationForm
 from projectapp.models import Project
 
@@ -27,6 +28,10 @@ class ProjectDetailView(DetailView, MultipleObjectMixin):
     template_name = 'projectapp/detail.html'
 
     paginate_by = 20 ## 게시판 안에 게시글 몇개 넣을지
+
+    def get_context_data(self, **kwargs):
+        article_list = Article.objects.filter(project=self.object)#특정조건 게시글 가져오기
+        return super().get_context_data(object_list=article_list, **kwargs)
 
 
 class ProjectListView(ListView):
