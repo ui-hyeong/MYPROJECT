@@ -15,7 +15,7 @@ class SubscriptionView(RedirectView):
 
     def get(self, request, *args, **kwargs): #http get매서드가 왔을때 할 행동
         user = request.user
-        project = Project.get(pk=kwargs['project_pk'])
+        project = Project.objects.get(pk=kwargs['project_pk'])
 
         subscription = Subscription.objects.filter(user=user,
                                                    project=project)
