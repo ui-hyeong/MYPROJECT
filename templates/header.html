@@ -17,6 +17,13 @@
                 Projects
             </a>
         </span>
+        {% if user.is_authenticated %}
+            <span>
+                <a href="{% url 'projectapp:list' %}">
+                    Subscription
+                </a>
+            </span>
+        {% endif %}
         {% if not user.is_authenticated %}   {# 로그인 확인 여부를 알아주는 객체 #}
         <span>
             <a href="{% url 'accountapp:login' %}">
