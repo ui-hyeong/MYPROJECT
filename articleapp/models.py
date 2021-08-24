@@ -20,3 +20,7 @@ class Article(models.Model):
 
     created_at = models.DateField(auto_now_add=True, null=True)
     # 언제 작성을 했는지, db가 찍히는 순간? 시간을 찍어준다.
+
+
+    #게시물 생성시 최초 좋아요 갯수
+    like = models.IntegerField(default=0)
