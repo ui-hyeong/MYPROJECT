@@ -30,7 +30,8 @@
                  class="article_image"
                  alt="">
             <div class="my-5 article_content">
-                {{ target_article.content }}
+                {{ target_article.content | safe}}
+                        {#    safe는 검증을 통해 안전하게 출력한다  #}
             </div>
             {% if target_article.writer == user %}
             <div>
