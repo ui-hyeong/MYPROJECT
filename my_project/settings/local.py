@@ -1,6 +1,7 @@
 import os
 
-from my_project.settings.base import BASE_DIR
+from .base import *
+
 
 env_list = dict()
 
